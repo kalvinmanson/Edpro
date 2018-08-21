@@ -10,4 +10,8 @@ class WebController extends Controller
   {
     return view('web.index');
   }
+  public function soon()
+  {
+    return view('web.soon');
+  }
 }

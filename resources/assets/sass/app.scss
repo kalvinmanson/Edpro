@@ -10,7 +10,21 @@
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~fancybox/dist/css/jquery.fancybox.css';
 
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Anton', sans-serif;
+}
+.soon {
+  background-image: url(/img/soon-bg.jpg);
+  background-size: cover;
+  background-position: right bottom;
+  min-height: 100vh;
+}
+.soon .logo {
+  color: $green;
 }

@@ -33,4 +33,5 @@ Route::prefix('admin')->namespace('Admin')->as('admin.')->middleware(['auth', 'a
 Auth::routes();
 
 Route::get('/home', 'WebController@index')->name('home');
-Route::get('/', 'WebController@index')->name('home');
+Route::get('/', 'WebController@soon')->name('soon');
+Route::post('/contact', 'ContactController@store')->name('contact');
