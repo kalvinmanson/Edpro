@@ -19,6 +19,8 @@ Vue.component('attachments', require('./components/AttachmentsComponent.vue'));
 Vue.component('editor', require('./components/EditorComponent.vue'));
 Vue.component('upload-input', require('./components/UploadInputComponent.vue'));
 Vue.component('admin-fields', require('./components/AdminFieldsComponent.vue'));
+//site components
+Vue.component('cart', require('./components/CartComponent.vue'));
 
 
 

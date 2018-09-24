@@ -53,6 +53,7 @@ class BlockController extends Controller
       'name' => 'required|max:255'
     ]);
     $block->name = $request->name;
+    $block->position = $request->position;
     $block->picture = $request->picture;
     $block->description = $request->description;
     $block->content = $request->content;

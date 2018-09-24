@@ -17,6 +17,12 @@
             <label for="description">Description</label>
             <textarea type="text" name="description" id="description" class="form-control" rows="5">{{ old('description') ? old('description') : $block->description }}</textarea>
           </div>
+          <div class="form-group">
+            <label for="position">Position</label>
+            <select name="position" id="position" class="form-control">
+              <option value="BannerHome" {{ $block->position == 'BannerHome' ? 'selected' : '' }}>BannerHome</option>
+            </select>
+          </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">

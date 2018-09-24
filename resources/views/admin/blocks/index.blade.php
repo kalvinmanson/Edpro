@@ -8,6 +8,7 @@
     <tr>
       <th width="20">Id</th>
       <th>Name</th>
+      <th>Position</th>
       <th>Picture</th>
       <th>Timestamps</th>
     </tr>
@@ -17,6 +18,7 @@
       <td>
         <a href="{{ route('admin.blocks.edit', $block->id) }}"><strong>{{ $block->name }}</strong></a>
       </td>
+      <td>{{ $block->position }}</td>
       <td><a href="{{ $block->picture }}" data-fancybox="gallery">{{ $block->picture }}</a></td>
       <td>
         <small>

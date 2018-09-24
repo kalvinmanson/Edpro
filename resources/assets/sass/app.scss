@@ -9,14 +9,20 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~fancybox/dist/css/jquery.fancybox.css';
+@import '~animate.css/animate.min.css';
 
 @import url('https://fonts.googleapis.com/css?family=Anton');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+body {
+  background-color: $white;
 }
 h1, h2, h3, h4, h5 {
+  font-family: 'Roboto Slab', serif;
+}
+
+a { color: $green; }
+.soon h1 {
   font-family: 'Anton', sans-serif;
 }
 .soon {
@@ -27,4 +33,84 @@ h1, h2, h3, h4, h5 {
 }
 .soon .logo {
   color: $green;
+}
+header {
+  position: relative;
+  z-index: 2;
+}
+header .miniTop {
+  background-color: $gray-200;
+}
+header .miniTop ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header .miniTop ul li {
+  display: inline-block;
+}
+header .miniTop ul li a {
+  display: block;
+  padding: 5px;
+  color: $gray-700;
+  font-size: 0.8em;
+}
+header .topCart {
+  position: relative;
+}
+header .cartIcon {
+  position: relative;
+  z-index: 10;
+}
+header .cartIcon span {
+  position: absolute;
+  left:  10px;
+  top: 10px;
+}
+.carroHome .carousel-caption {
+  background-color: rgba($white, 0.7);
+  color: $gray-900;
+  padding: 2em;
+  top: 20px;
+  right: 45%;
+  bottom: auto;
+}
+.lineTitle {
+  display: block;
+  border-bottom: 2px solid $gray-300;
+  margin: 15px 0;
+  padding: 0 15px;
+}
+.lineTitle h2 small {
+  font-size: 0.6em;
+  color: $gray-500;
+  display: block;
+}
+.bookList .cover {
+  position: relative;
+}
+.bookList .cover .price {
+  position: absolute;
+  background-color: rgba($white, 0.7);
+  bottom: 0;
+  text-align: right;
+}
+.bookList .cover .price s {
+  color: $gray-500;
+  display: block;
+}
+.bookList h5 small {
+  color: $gray-500;
+  display: block;
+}
+/* STORE */
+.book .price {
+  position: relative;
+  background-color: rgba($white, 0.7);
+  bottom: 0;
+  text-align: right;
+}
+.book .price s {
+  color: $gray-500;
+  display: block;
 }

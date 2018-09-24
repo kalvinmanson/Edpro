@@ -29,9 +29,23 @@ Route::prefix('admin')->namespace('Admin')->as('admin.')->middleware(['auth', 'a
   Route::resource('orders', 'OrderController');
 });
 
-
 Auth::routes();
 
 Route::get('/home', 'WebController@index')->name('home');
 Route::get('/', 'WebController@soon')->name('soon');
 Route::post('/contact', 'ContactController@store')->name('contact');
+
+/* STORE */
+Route::get('/buscar', 'StoreController@search')->name('search');
+Route::get('/tienda', 'StoreController@index')->name('store');
+Route::get('/tienda/topic/{topic}', 'StoreController@index')->where('topic', '[a-z,0-9-]+')->name('storeTopic');
+Route::get('/tienda/{slug}', 'StoreController@book')->where('slug', '[a-z,0-9-]+')->name('book');
+Route::post('/tienda/{slug}/addcomment', 'StoreController@addcomment')->where('slug', '[a-z,0-9-]+')->middleware(['auth'])->name('addcomment');
+
+//Cart
+Route::get('/cart/json', 'CartController@json');
+Route::get('/cart/add/{id}', 'CartController@store')->name('cartAdd');
+
+/* Blog */
+Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/blog/{slug}', 'BlogController@post')->where('slug', '[a-z,0-9-]+')->name('post');

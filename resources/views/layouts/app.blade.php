@@ -12,9 +12,26 @@
 <body>
   <div id="app">
     @include('partials.header')
-    <main class="py-4">
-        @yield('content')
+    <main>
+      <div class="container">
+        @include('flash::message')
+      </div>
+      @yield('content')
     </main>
+    <footer class="bg-dark text-white py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+        </div>
+        <p>
+          <small>
+            &copy; 2018 Todos los derechos reservados por Ediciones el Profesional LTDA.<br>
+            Desarrollado por <a href="//droni.co" title="Desarrollo Inteligente">Droni.co</a>.
+          </small>
+        </p>
+      </div>
+    </footer>
   </div>
   <script src="{{ asset('js/app.js') }}" defer></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
