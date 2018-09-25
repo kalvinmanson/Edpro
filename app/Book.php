@@ -3,16 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
-class Book extends Model
+class Book extends Model implements Buyable
 {
+  public function getBuyableIdentifier($options = NULL){
+    return $this->id;
+  }
+  public function getBuyableDescription($options = NULL){
+    return $this->name;
+  }
+  public function getBuyablePrice($options = NULL){
+    return $this->price;
+  }
   public function comments()
   {
     return $this->hasMany('App\Comment');
-  }
-  public function carts()
-  {
-    return $this->hasMany('App\Cart');
   }
   public function publisher()
   {

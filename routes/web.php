@@ -43,6 +43,7 @@ Route::get('/tienda/{slug}', 'StoreController@book')->where('slug', '[a-z,0-9-]+
 Route::post('/tienda/{slug}/addcomment', 'StoreController@addcomment')->where('slug', '[a-z,0-9-]+')->middleware(['auth'])->name('addcomment');
 
 //Cart
+Route::get('/cart', 'CartController@index');
 Route::get('/cart/json', 'CartController@json');
 Route::get('/cart/add/{id}', 'CartController@store')->name('cartAdd');
 

@@ -2,22 +2,22 @@
   <div>
     <a v-on:click="opened = !opened" class="cartIcon float-right py-3">
       <i class="fas fa-shopping-cart fa-3x"></i>
-      <span class="badge badge-danger p-2 rounded">{{ carts.length }}</span>
+      <span v-if="Object.keys(carts).length > 0" class="badge badge-danger p-2 rounded">{{ Object.keys(carts).length }}</span>
     </a>
     <div class="miniCart" v-if="opened">
-      <div class="text-right">
+      <div class="text-right" v-if="Object.keys(carts).length > 0">
         <a href="/cart" class="btn btn-sm btn-outline-success">Ir a pagar</a>
       </div>
-      <ul>
+      <ul v-if="Object.keys(carts).length > 0">
         <li v-for="cart in carts">
-          {{ cart.book.name }}<br>
+          {{ cart.name }}<br>
           <small>
-            <strong class="text-primary float-right">$ {{ Intl.NumberFormat().format(cart.book.price) }}</strong>
-            Cantidad: {{ cart.quantity }} |
-            <s>$ {{ Intl.NumberFormat().format(cart.book.old_price) }}</s>
+            <strong class="text-primary float-right">$ {{ Intl.NumberFormat().format(cart.price) }}</strong>
+            Cantidad: {{ cart.qty }}
           </small>
         </li>
       </ul>
+      <p v-if="Object.keys(carts).length == 0" class="text-secondary">Tu carro de compras está vacio.</p>
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     load() {
-      window.axios.get('/cart/json?session='+this.session).then(({ data }) => {
+      window.axios.get('/cart/json').then(({ data }) => {
         this.carts = data;
         console.log(data);
       });

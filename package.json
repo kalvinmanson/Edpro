@@ -23,6 +23,7 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^11.0.1",
         "@fortawesome/fontawesome-free": "^5.1.1",
+        "animate.css": "^3.7.0",
         "vue-ckeditor2": "^2.0.6"
     }
 }

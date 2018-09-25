@@ -1,2 +1,7 @@
 Finder Attachments (CRUD)
 Button ckfinder
+
+sidebar carts
+pagos online
+blog
+mi cuenta

@@ -6,6 +6,7 @@
         <li><a href="#">Contacto</a></li>
         <li><a href="#">Ayuda</a></li>
         <li><a href="#">Español</a></li>
+        <li><a href="/cart">Cart</a></li>
       </ul>
     </div>
   </div>
