@@ -82,6 +82,10 @@
           <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
         </div>
         <div class="form-group">
+          <label for="name">ISBN</label>
+          <input type="number" name="isbn" id="isbn" class="form-control" value="{{ old('isbn') }}" required>
+        </div>
+        <div class="form-group">
           <input type="text" name="slug" id="slug" class="form-control form-control-sm" placeholder="slug-of-the-content" value="{{ old('slug') }}" required>
         </div>
       </div>

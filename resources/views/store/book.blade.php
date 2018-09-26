@@ -4,13 +4,13 @@
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
 @section('content')
-<div class="container book">
+<div class="container book py-3">
   <div class="row">
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-5">
           <a href="{{ $book->picture or '/img/no-cover.jpg' }}" data-fancybox="gallery">
-            <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="img-fluid">
+            <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="w-100">
           </a>
         </div>
         <div class="col-md-7">
@@ -34,6 +34,10 @@
             Formato: {{ $book->format }} ({{ $book->size_w.'x'.$book->size_h.'x'.$book->size_d }}cm) <br>
           </p>
           <p>{{ $book->description }}</p>
+          <p>Temas:
+            @foreach($book->topics as $topic)
+              <a href="{{ route('storeTopic', ['topic' => $topic->slug])}}" title="Libros de {{ $topic->name }}">{{ $topic->name }}</a>,
+            @endforeach
         </div>
       </div>
 
@@ -79,12 +83,24 @@
       </p>
 
       <h5>Autor(es):</h5>
-      @foreach($book->authors as $author)
-        <div class="author">
-          <strong>{{ $author->name }}</strong>. {{ $author->description }}
-          <a href="#">Libros de {{ $author->name }}</a>
+      <div class="accordion" id="accordionExample">
+        @foreach($book->authors as $author)
+        <div class="card">
+          <div class="card-header" id="authorHead{{ $author->id }}">
+            <a href="JavaScript:void();" data-toggle="collapse" data-target="#author{{ $author->id }}" aria-expanded="true" aria-controls="author{{ $author->id }}">
+              {{ $author->name }}
+            </a>
+          </div>
+
+          <div id="author{{ $author->id }}" class="collapse" aria-labelledby="authorHead{{ $author->id }}" data-parent="#accordionExample">
+            <div class="card-body">
+              {{ $author->description }}
+              <a href="#">Libros de {{ $author->name }}</a>
+            </div>
+          </div>
         </div>
-      @endforeach
+        @endforeach
+      </div>
     </div>
   </div>
 

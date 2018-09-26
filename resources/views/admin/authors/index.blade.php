@@ -32,6 +32,7 @@
     </tr>
     @endforeach
   </table>
+  {{ $authors->links() }}
 </div>
 
 

@@ -28,11 +28,13 @@ class BookController extends Controller
     $validatedData = $request->validate([
       'name' => 'required|max:255',
       'slug' => 'required|unique:books|max:255',
-      'publisher_id' => 'required'
+      'publisher_id' => 'required',
+      'isbn' => 'required|max:255'
     ]);
     $book = new Book;
     $book->name = $request->name;
     $book->slug = $request->slug;
+    $book->isbn = $request->isbn;
     $book->publisher_id = $request->publisher_id;
     $book->save();
 

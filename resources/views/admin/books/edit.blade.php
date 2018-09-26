@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
+  <book-info isbn="{{ $book->isbn }}"></book-info>
   <form action="{{ route('admin.books.update', $book->id) }}" method="POST" class="card">
     <input type="hidden" name="_method" value="PUT">
     @csrf

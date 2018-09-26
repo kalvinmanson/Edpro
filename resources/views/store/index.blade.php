@@ -5,7 +5,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container py-3">
   <div class="bg-white">
     <div class="row">
       <div class="col-md-8 col-lg-9">
@@ -18,13 +18,13 @@
         <div class="row py-3">
           @foreach($books as $book)
           <div class="col-sm-6 col-md-4">
-            <div class="bookList">
+            <div class="bookList mb-3">
               <a href="{{ route('book', $book->slug) }}" class="cover">
                 <div class="price py-1 px-2">
                   <s>$ {{ $book->old_price > 0 ? number_format($book->old_price) : '' }}</s>
                   <span>$ {{ number_format($book->price) }}</span>
                 </div>
-                <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="img-fluid">
+                <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="w-100">
               </a>
               <h5>
                 {{ $book->name }}

@@ -11,6 +11,48 @@
 @import '~fancybox/dist/css/jquery.fancybox.css';
 @import '~animate.css/animate.min.css';
 
+
+/* MIXINS */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin grid-colums($count, $gap:3) {
+	-webkit-column-count: $count;
+	   -moz-column-count: $count;
+			column-count: $count;
+	-webkit-column-gap: $gap px;
+	   -moz-column-gap: $gap px;
+			column-gap: $gap px;
+}
+@mixin colum-break() {
+	-webkit-column-break-inside: avoid;
+	          page-break-inside: avoid;
+	               break-inside: avoid;
+}
+@mixin transition($speed:0.5s) {
+	-webkit-transition: all $speed ease;
+	   -moz-transition: all $speed ease;
+	     -o-transition: all $speed ease;
+}
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+
+/*
+@media (max-width: $screen-xs-max) { ... }
+@media (min-width: $screen-sm-min) { ... }
+@media (max-width: $screen-sm-max) { ... }
+@media (min-width: $screen-md-min) { ... }
+@media (max-width: $screen-md-max) { ... }
+@media (min-width: $screen-lg-min) { ... }
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Anton');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
@@ -36,6 +78,7 @@ a { color: $green; }
 }
 header {
   position: relative;
+  background-color: $green;
   z-index: 2;
 }
 header .miniTop {
@@ -58,14 +101,38 @@ header .miniTop ul li a {
 header .topCart {
   position: relative;
 }
+header .topCart .links {
+  color: $white;
+}
 header .cartIcon {
   position: relative;
   z-index: 10;
+  color: $white;
 }
 header .cartIcon span {
   position: absolute;
   left:  10px;
   top: 10px;
+}
+header .navbar-nav .nav-item .nav-link {
+  color: $white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Roboto Slab', serif;
+}
+header .menuColumns {
+  @include grid-colums(3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header .menuColumns li {
+  border-bottom: 1px dashed #CCCCCC;
+}
+header .miniBook img {
+  float: left;
+  max-width: 60px;
+  margin: 0 10px 10px 0;
 }
 .carroHome .carousel-caption {
   background-color: rgba($white, 0.7);

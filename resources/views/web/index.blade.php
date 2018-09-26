@@ -6,7 +6,7 @@
 @section('content')
   <div id="carroHome" class="carroHome carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <?php $bannersi = -1; ?>
+      <?php $bannersi = 0; ?>
       @foreach($banners as $banner)
       <li data-target="#carroHome" data-slide-to="{{ $bannersi++ }}" class="{{ $bannersi == 0 ? 'active' : '' }}"></li>
       @endforeach
@@ -55,7 +55,7 @@
               <s>$ {{ $book->old_price > 0 ? number_format($book->old_price) : '' }}</s>
               <span>$ {{ number_format($book->price) }}</span>
             </div>
-            <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="img-fluid">
+            <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="w-100">
           </a>
           <h5>
             {{ $book->name }}
