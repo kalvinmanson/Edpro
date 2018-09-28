@@ -28,6 +28,7 @@ Route::prefix('admin')->namespace('Admin')->as('admin.')->middleware(['auth', 'a
   Route::resource('books', 'BookController');
   Route::resource('orders', 'OrderController');
 });
+//Route::get('/migrate', 'WebController@migrate')->name('migrate');
 
 Auth::routes();
 
