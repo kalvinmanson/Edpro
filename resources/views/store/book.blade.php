@@ -32,6 +32,7 @@
             Páginas: {{ $book->pages }}<br>
             Año: {{ $book->year }}<br>
             Formato: {{ $book->format }} ({{ $book->size_w.'x'.$book->size_h.'x'.$book->size_d }}cm) <br>
+            Formato: {{ $book->tags }}
           </p>
           <p>{{ $book->description }}</p>
           <p>Temas:
