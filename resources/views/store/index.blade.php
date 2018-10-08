@@ -45,6 +45,13 @@
           </div>
           @endforeach
         </div>
+        @if($books->count() == 0)
+          <div class="text-center 404">
+            <img src="/img/404.png" class="img-fluid">
+            <h2>Nos perdimos</h2>
+            <h3>No encontramos libros por tu criterio de búsqueda</h3>
+          </div>
+        @endif
       </div>
       <div class="col-md-4 col-lg-3">
         <h5>Temas</h5>

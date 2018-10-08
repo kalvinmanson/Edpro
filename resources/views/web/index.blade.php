@@ -4,45 +4,18 @@
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
 @section('content')
-  <div id="carroHome" class="carroHome carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <?php $bannersi = 0; ?>
-      @foreach($banners as $banner)
-      <li data-target="#carroHome" data-slide-to="{{ $bannersi++ }}" class="{{ $bannersi == 0 ? 'active' : '' }}"></li>
-      @endforeach
-    </ol>
-    <div class="carousel-inner">
-      @foreach($banners as $banner)
-      <div class="carousel-item <?php if(!isset($bannersitem)) { echo 'active'; $bannersitem = 1; } ?>">
-        <a href="{{ $banner->link }}">
-          <img class="d-block w-100 animated fadeIn" src="{{ $banner->picture }}" alt="{{ $banner->name }}">
-        </a>
-        @if($banner->description)
-        <div class="carousel-caption d-none d-md-block text-left animated fadeInDown">
-          <h5>{{ $banner->name }}</h5>
-          <p>{{ $banner->description }}</p>
-          <a href="#" class="btn btn-outline-success">Ver más...</a>
-        </div>
-        @endif
-      </div>
-      @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#carroHome" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carroHome" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+<div class="searchFull">
+  <div class="container">
+
   </div>
+</div>
 <div class="container">
   {{-- Last Books --}}
   <div class="bg-white">
     <div class="lineTitle">
       <a href="{{ route('store') }}" class="btn btn-sm btn-outline-success float-right">Ver todos</a>
       <h2>
-        <small>Descubre lo libros</small>
+        <small>Descubre los libros</small>
         Más vendidos.
       </h2>
     </div>
@@ -104,5 +77,5 @@
     </div>
   </div>
 </div>
-
+@include('partials.store.lastProducts')
 @endsection

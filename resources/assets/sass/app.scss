@@ -1,6 +1,7 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 
 // Variables
 @import 'variables';
@@ -58,9 +59,10 @@ $screen-md-max: ($screen-lg-min - 1);
 
 body {
   background-color: $white;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 h1, h2, h3, h4, h5 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 a { color: $green; }
@@ -180,4 +182,10 @@ header .miniBook img {
 .book .price s {
   color: $gray-500;
   display: block;
+}
+.slideProducts {
+  background-image: url(/img/bg-slide.png);
+  background-position: center top;
+  background-size: cover;
+
 }
