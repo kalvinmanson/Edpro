@@ -77,19 +77,11 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="topics">Topics</label>
-                <select name="topics[]" id="topics" class="form-control" multiple>
-                  @foreach($topics as $topic)
-                    <option value="{{ $topic->id }}" {{ $book->topics->where('id', $topic->id)->first() ? 'selected' : ''}}>{{ $topic->parent ? $topic->parent->name.' / ' : '' }}{{ $topic->name }}</option>
-                  @endforeach
-                </select>
+                <add-topic :topics="{{ $topics }}" :selected="{{ $book->topics }}"></add-topic>
               </div>
               <div class="form-group">
                 <label for="authors">Authors</label>
-                <select name="authors[]" id="authors" class="form-control" multiple>
-                  @foreach($authors as $author)
-                    <option value="{{ $author->id }}" {{ $book->authors->where('id', $author->id)->first() ? 'selected' : ''}}>{{ $author->name }}</option>
-                  @endforeach
-                </select>
+                <add-author :authors="{{ $authors }}" :selected="{{ $book->authors }}"></add-author>
               </div>
             </div>
           </div>

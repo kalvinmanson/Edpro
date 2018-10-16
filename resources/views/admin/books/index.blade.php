@@ -2,7 +2,13 @@
 
 @section('content')
 <div class="container-fluid">
-  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addNew"><i class="fa fa-plus"></i> Add new</button>
+  <button type="button" class="btn btn-primary float-right ml-3" data-toggle="modal" data-target="#addNew"><i class="fa fa-plus"></i> Add new</button>
+
+  <form method="GET" action="{{ route('admin.books.index')}}" class="float-right form-inline">
+    <input type="text" class="form-control" role="search" name="q" placeholder="Search..." required>
+    <button type="submit" class="btn btn-outline-success"><i class="fas fa-search"></i></button>
+  </form>
+
   <h1>Books</h1>
   <table class="table table-striped">
     <tr>
@@ -11,7 +17,6 @@
       <th>Book Info</th>
       <th>Topics</th>
       <th>Author</th>
-      <th>Picture</th>
       <th>Stock</th>
       <th>Price</th>
       <th>Timestamps</th>
@@ -20,6 +25,11 @@
     <tr>
       <td>{{ $book->id }}</td>
       <td>
+        @if($book->picture)
+          <a href="{{ $book->picture }}" class="float-left" data-fancybox="gallery">
+            <img src="{{ $book->picture }}" style="width: 70px;" class="pr-3 pb-2">
+          </a>
+        @endif
         <a href="{{ route('admin.books.edit', $book->id) }}"><strong>{{ $book->name }}</strong></a><br>
         <small><a href="#">/{{ $book->slug }}</a>
       </td>
@@ -38,7 +48,6 @@
           {{ $author->name }},
         @endforeach
       </td>
-      <td><a href="{{ $book->picture }}" data-fancybox="gallery">{{ $book->picture }}</a></td>
       <td>{{ $book->stock }}</td>
       <td>
         <small><strike>$ {{ number_format($book->old_price) }} COP</strike></small><br>

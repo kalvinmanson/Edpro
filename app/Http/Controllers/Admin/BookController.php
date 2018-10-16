@@ -16,9 +16,14 @@ use URL;
 
 class BookController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $books = Book::orderBy('updated_at', 'desc')->paginate(20);
+    $books = Book::orderBy('updated_at', 'asc');
+    if(isset($request->q)) {
+      $books = $books->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('isbn', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
+    }
+    $books = $books->paginate(20);
+
     $publishers = Publisher::orderBy('name', 'asc')->get();
     return view('admin.books.index', compact('books', 'publishers'));
   }
@@ -98,9 +103,9 @@ class BookController extends Controller
     if($request->promo) { $book->promo = true; } else { $book->promo = false; }
     // asociated categories
     $book->topics()->detach();
-    $book->topics()->attach($request->topics);
+    $book->topics()->attach(array_unique($request->topics));
     $book->authors()->detach();
-    $book->authors()->attach($request->authors);
+    $book->authors()->attach(array_unique($request->authors));
     $book->save();
 
     //log notification
