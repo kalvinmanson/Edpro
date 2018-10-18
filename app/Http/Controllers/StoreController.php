@@ -15,7 +15,7 @@ class StoreController extends Controller
   public function search(Request $request) {
     $books = Book::orderBy('updated_at', 'desc');
     if($request->q) {
-      $books = $books->where('name', 'LIKE', '%'.$request->q.'%');
+      $books = $books->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%')->orWhere('tags', 'LIKE', '%'.$request->q.'%');
     }
     $books = $books->paginate(20);
     $authors = Author::where('name', 'LIKE', '%'.$request->q.'%')->get();

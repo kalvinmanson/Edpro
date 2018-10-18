@@ -3,6 +3,22 @@
 @section('title', 'Ediciones El Profesional')
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
+@section('header')
+  <div class="barBg p-4" style="background-image: url(/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400)">
+    <h4>
+    @foreach($book->topics as $topic)
+      {{ $topic->name }},
+    @endforeach
+    </h4>
+    <h2>{{ $book->name }}</h2>
+    <h5>Autor(es):
+    @foreach($book->authors as $author)
+      {{ $author->name }},
+    @endforeach
+  </h5>
+  </div>
+@endsection
+
 @section('content')
 <div class="container book py-3">
   <div class="row">
@@ -32,6 +48,7 @@
             Páginas: {{ $book->pages }}<br>
             Año: {{ $book->year }}<br>
             Formato: {{ $book->format }} ({{ $book->size_w.'x'.$book->size_h.'x'.$book->size_d }}cm) <br>
+            Formato: {{ $book->tags }}
           </p>
           <p>{{ $book->description }}</p>
           <p>Temas:

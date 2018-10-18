@@ -3,14 +3,14 @@
 @section('title', 'Ediciones El Profesional')
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
+@section('header')
+  <div class="barBg p-4">
+    <h3>Noticias y Novedades</h3>
+    <h2>Blog de actualidad.</h2>
+  </div>
+@endsection
 @section('content')
 <div class="container">
-  <div class="lineTitle">
-    <h2>
-      <small>Noticias y Novedades</small>
-      Blog de actualidad.
-    </h2>
-  </div>
   <div class="row">
     <div class="col-md-8 col-lg-9">
       @foreach($posts as $post)
@@ -27,7 +27,6 @@
       @endforeach
     </div>
     <div class="col-md-4 col-lg-3">
-
     </div>
   </div>
 </div>

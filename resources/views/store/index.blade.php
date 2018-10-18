@@ -3,18 +3,18 @@
 @section('title', 'Ediciones El Profesional')
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
-@section('content')
+@section('header')
+  <div class="barBg p-4">
+    <h3>Catálogo 2018</h3>
+    <h2>Ediciones el Profesional</h2>
+  </div>
+@endsection
 
+@section('content')
 <div class="container py-3">
   <div class="bg-white">
     <div class="row">
       <div class="col-md-8 col-lg-9">
-        <div class="lineTitle">
-          <h2>
-            <small>Catalogo</small>
-            Ediciones el Profesional
-          </h2>
-        </div>
         <div class="row py-3">
           @foreach($books as $book)
           <div class="col-sm-6 col-md-4">
@@ -24,7 +24,7 @@
                   <s>$ {{ $book->old_price > 0 ? number_format($book->old_price) : '' }}</s>
                   <span>$ {{ number_format($book->price) }}</span>
                 </div>
-                <img src="{{ $book->picture or '/img/no-cover.jpg' }}" class="w-100">
+                <img src="/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400" class="w-100">
               </a>
               <h5>
                 {{ $book->name }}
@@ -45,6 +45,13 @@
           </div>
           @endforeach
         </div>
+        @if($books->count() == 0)
+          <div class="text-center 404">
+            <img src="/img/404.png" class="img-fluid">
+            <h2>Nos perdimos</h2>
+            <h3>No encontramos libros por tu criterio de búsqueda</h3>
+          </div>
+        @endif
       </div>
       <div class="col-md-4 col-lg-3">
         <h5>Temas</h5>

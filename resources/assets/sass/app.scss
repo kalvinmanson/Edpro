@@ -1,7 +1,4 @@
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
@@ -54,13 +51,14 @@ $screen-md-max: ($screen-lg-min - 1);
 */
 
 @import url('https://fonts.googleapis.com/css?family=Anton');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
 
 body {
-  background-color: $white;
+  background-color: $gray-100;
+  font-family: 'Raleway', sans-serif;
 }
 h1, h2, h3, h4, h5 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 a { color: $green; }
@@ -78,7 +76,10 @@ a { color: $green; }
 }
 header {
   position: relative;
-  background-color: $green;
+  background-image: url(/img/header-bg.jpg);
+  background-size: cover 100px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   z-index: 2;
 }
 header .miniTop {
@@ -100,13 +101,14 @@ header .miniTop ul li a {
 }
 header .topCart {
   position: relative;
+  z-index: 30;
 }
 header .topCart .links {
   color: $white;
 }
 header .cartIcon {
   position: relative;
-  z-index: 10;
+  z-index: 30;
   color: $white;
 }
 header .cartIcon span {
@@ -114,25 +116,17 @@ header .cartIcon span {
   left:  10px;
   top: 10px;
 }
-header .navbar-nav .nav-item .nav-link {
+.subHeader {
+  background-image: url(/img/header-bg2.jpg);
+  background-size: cover;
+}
+.mainMenu {
+  background-color: rgba(0,0,0,0.7);
+}
+.mainMenu .navbar-nav .nav-item .nav-link {
   color: $white;
   text-transform: uppercase;
   font-weight: bold;
-  font-family: 'Roboto Slab', serif;
-}
-header .menuColumns {
-  @include grid-colums(3);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-header .menuColumns li {
-  border-bottom: 1px dashed #CCCCCC;
-}
-header .miniBook img {
-  float: left;
-  max-width: 60px;
-  margin: 0 10px 10px 0;
 }
 .carroHome .carousel-caption {
   background-color: rgba($white, 0.7);
@@ -144,7 +138,7 @@ header .miniBook img {
 }
 .lineTitle {
   display: block;
-  border-bottom: 2px solid $gray-300;
+  border-bottom: 2px dashed $gray-200;
   margin: 15px 0;
   padding: 0 15px;
 }
@@ -180,4 +174,28 @@ header .miniBook img {
 .book .price s {
   color: $gray-500;
   display: block;
+}
+.slideProducts {
+  background-image: url(/img/bg-slide.png);
+  background-position: center top;
+  background-size: cover;
+}
+.barBg {
+  background-image: url(/img/bar-bg.png);
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.publisherBrands {
+  background-color: $gray-900;
+}
+.publisherBrands a {
+  display: inline-block;
+  position: relative;
+}
+.publisherBrands a h4 {
+  text-align: center;
+}
+.newsLetter {
+  background-image: url(/img/news-subscribe.jpg);
+  background-size: cover;
 }

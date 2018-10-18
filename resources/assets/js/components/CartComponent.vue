@@ -1,7 +1,7 @@
 <template>
   <div>
     <a v-on:click="opened = !opened" class="cartIcon float-right py-3">
-      <i class="fas fa-shopping-cart fa-3x"></i>
+      <i class="fas fa-shopping-cart fa-3x text-white"></i>
       <span v-if="Object.keys(carts).length > 0" class="badge badge-danger p-2 rounded">{{ Object.keys(carts).length }}</span>
     </a>
     <div class="miniCart" v-if="opened">

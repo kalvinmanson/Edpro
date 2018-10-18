@@ -6,6 +6,7 @@ use App\Block;
 use App\Book;
 use App\Topic;
 use App\Page;
+use App\Publisher;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -19,7 +20,8 @@ class WebController extends Controller
     $lastPost = Page::whereHas('categories', function ($query) {
       $query->where('slug', 'blog');
     })->get();
-    return view('web.index', compact('banners', 'topBooks', 'lastPost'));
+    $publishers = Publisher::inRandomOrder()->limit(5)->get();
+    return view('web.index', compact('banners', 'topBooks', 'lastPost', 'publishers'));
   }
   public function soon()
   {
