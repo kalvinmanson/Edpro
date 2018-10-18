@@ -6,16 +6,18 @@
 @section('header')
   <div class="barBg p-4" style="background-image: url(/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400)">
     <h4>
-    @foreach($book->topics as $topic)
-      {{ $topic->name }},
-    @endforeach
+      Libro:
     </h4>
     <h2>{{ $book->name }}</h2>
-    <h5>Autor(es):
+    <p class="text-secondary"><i class="fas fa-users"></i>
     @foreach($book->authors as $author)
       {{ $author->name }},
     @endforeach
-  </h5>
+    <br><i class="fas fa-tags"></i> 
+    @foreach($book->topics as $topic)
+      {{ $topic->name }},
+    @endforeach
+    </p>
   </div>
 @endsection
 
