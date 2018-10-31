@@ -47,6 +47,13 @@ Route::post('/tienda/{slug}/addcomment', 'StoreController@addcomment')->where('s
 Route::get('/cart', 'CartController@index');
 Route::get('/cart/json', 'CartController@json');
 Route::get('/cart/add/{id}', 'CartController@store')->name('cartAdd');
+Route::get('/cart/remove/{id}', 'CartController@remove')->name('cartRemove');
+Route::post('/cart/update/{id}', 'CartController@update')->name('cartUpdate');
+
+//Orders
+Route::middleware(['auth'])->group(function () {
+  Route::resource('orders', 'OrderController');
+});
 
 /* Blog */
 Route::get('/blog', 'BlogController@index')->name('blog');

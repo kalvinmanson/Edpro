@@ -7,43 +7,48 @@
   <div class="container">
     <div class="lineTitle">
       <h2>
-        <small>Carro de compra</small>
+        <small>Realizar pedido</small>
         Completa tu pedido
       </h2>
     </div>
     <div class="row">
       <div class="col-md-8">
         @if(count($carts) > 0)
-          @foreach($carts as $cart)
-            <div class="card">
-              <div class="card-body">
-                <div class="float-right text-right">
-                  <small><s>$ {{ number_format($cart->model->old_price) }}</s></small><br>
-                  @if($cart->qty == 1)
-                    <strong> $ {{ number_format($cart->model->price) }}</strong>
-                  @else
-                    (x{{ $cart->qty }})<strong> $ {{ number_format($cart->model->price * $cart->qty) }}</strong>
-                  @endif
-                </div>
-                <strong><a href="{{ route('book', $cart->model->slug) }}" target="_blank">{{ $cart->model->name }}</a></strong><br>
-                <small>
-                  Autor(es): @foreach($cart->model->authors as $author)
-                    {{ $author->name }},
-                  @endforeach
-                  <br> Editorial: {{ $cart->model->publisher->name }}
-                </small>
-              </div>
-            </div>
-          @endforeach
+          @include('partials.cart.cart')
         @else
-          
+
         @endif
         <div class="text-secondary p-4">
           <p>Ediciones el profesional envia actualmente a todas las ciudades principales dle territorio Colombiano y algunos paises de latinoamerica cuando el cliente asume los costos de envio.</p>
         </div>
       </div>
       <div class="col-md-4">
-        @include('partials.cart.sidebar')
+        <div class="card">
+          <div class="card-header">Detalles del pedido</div>
+          <table class="table">
+            <tr>
+              <td>Articulos</td>
+              <td class="text-right">{{ Cart::count() }}</td>
+            </tr>
+            <tr>
+              <td>Subtotal</td>
+              <td class="text-right">$ {{ Cart::subtotal() }}</td>
+            </tr>
+            <tr>
+              <td>Impuestos</td>
+              <td class="text-right">$ {{ Cart::tax() }}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td class="text-right"><strong>$ {{ Cart::total() }}</strong></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="text-center">
+                <a href="{{ route('orders.create') }}" class="btn btn-primary btn-lg">Realizar Pedido</a>
+              </td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
