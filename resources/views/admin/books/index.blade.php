@@ -12,14 +12,34 @@
   <h1>Books</h1>
   <table class="table table-striped">
     <tr>
-      <th width="20">Id</th>
-      <th>Name</th>
+      <th width="20">
+        <a href="{{ route('admin.books.index', ['orderby' => 'id', 'order' => $nextOrder]) }}" class="btn btn-sm btn-link">
+          <strong>Id</strong>
+          {!! $nextOrder == 'asc' ? '<i class="fas fa-arrow-down"></i>' : '<i class="fas fa-arrow-up"></i>' !!}
+        </a>
+      </th>
+      <th>
+        <a href="{{ route('admin.books.index', ['orderby' => 'name', 'order' => $nextOrder]) }}" class="btn btn-sm btn-link">
+          <strong>Name</strong>
+          {!! $nextOrder == 'asc' ? '<i class="fas fa-arrow-down"></i>' : '<i class="fas fa-arrow-up"></i>' !!}
+        </a>
+      </th>
       <th>Book Info</th>
       <th>Topics</th>
       <th>Author</th>
       <th>Stock</th>
-      <th>Price</th>
-      <th>Timestamps</th>
+      <th>
+        <a href="{{ route('admin.books.index', ['orderby' => 'price', 'order' => $nextOrder]) }}" class="btn btn-sm btn-link">
+          <strong>Price</strong>
+          {!! $nextOrder == 'asc' ? '<i class="fas fa-arrow-down"></i>' : '<i class="fas fa-arrow-up"></i>' !!}
+        </a>
+      </th>
+      <th>
+        <a href="{{ route('admin.books.index', ['orderby' => 'updated_at', 'order' => $nextOrder]) }}" class="btn btn-sm btn-link">
+          <strong>Updated</strong>
+          {!! $nextOrder == 'asc' ? '<i class="fas fa-arrow-down"></i>' : '<i class="fas fa-arrow-up"></i>' !!}
+        </a>
+      </th>
     </tr>
     @foreach($books as $book)
     <tr>

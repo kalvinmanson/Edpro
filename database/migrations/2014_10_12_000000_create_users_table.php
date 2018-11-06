@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
         $table->string('role')->default('User');
         $table->string('avatar')->nullable();
         $table->string('provider')->default('web');
+        $table->string('country')->nullable();
         $table->string('city')->nullable();
         $table->string('address')->nullable();
         $table->string('phone')->nullable();

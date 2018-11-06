@@ -5,3 +5,18 @@ sidebar carts
 pagos online
 blog
 mi cuenta
+
+-pic libro
+
+Orders
+PayU
+Register/Login
+Omniauth
+Emails
+Quienes somos
+SEO
+Captcha
+
+
+edicioneselprofesional@hotmail.com
+Centro%6022430739%

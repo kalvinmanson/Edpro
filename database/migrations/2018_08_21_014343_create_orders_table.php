@@ -25,11 +25,11 @@ class CreateOrdersTable extends Migration
         $table->string('shipping_address')->nullable();
         $table->string('shipping_phone')->nullable();
         $table->string('shipping_code')->nullable();
-        $table->float('subtotal')->default(0);
-        $table->float('discount')->default(0);
-        $table->float('taxes')->default(0);
-        $table->float('shipping')->default(0);
-        $table->float('total')->default(0);
+        $table->integer('subtotal')->default(0);
+        $table->integer('discount')->default(0);
+        $table->integer('taxes')->default(0);
+        $table->integer('shipping')->default(0);
+        $table->integer('total')->default(0);
         $table->string('pay_method')->nullable();
         $table->string('pay_status')->default('Pending');
         $table->string('pay_response')->nullable();

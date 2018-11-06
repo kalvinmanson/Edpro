@@ -18,14 +18,26 @@ class BookController extends Controller
 {
   public function index(Request $request)
   {
-    $books = Book::orderBy('updated_at', 'asc');
+    if(isset($request->order) && $request->order == 'asc') {
+      $order = 'asc';
+      $nextOrder = 'desc';
+    } else {
+      $order = 'desc';
+      $nextOrder = 'asc';
+    }
+    if(isset($request->orderby)) {
+      $books = Book::orderBy($request->orderby, $order);
+    } else {
+      $books = Book::orderBy('created_at', 'desc');
+    }
     if(isset($request->q)) {
       $books = $books->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('isbn', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
     }
+
     $books = $books->paginate(20);
 
     $publishers = Publisher::orderBy('name', 'asc')->get();
-    return view('admin.books.index', compact('books', 'publishers'));
+    return view('admin.books.index', compact('books', 'publishers', 'nextOrder'));
   }
 
   public function store(Request $request)
@@ -102,10 +114,15 @@ class BookController extends Controller
     $book->old_price = $request->old_price;
     if($request->promo) { $book->promo = true; } else { $book->promo = false; }
     // asociated categories
-    $book->topics()->detach();
-    $book->topics()->attach(array_unique($request->topics));
-    $book->authors()->detach();
-    $book->authors()->attach(array_unique($request->authors));
+    if(is_array($request->topics)) {
+      $book->topics()->detach();
+      $book->topics()->attach(array_unique($request->topics));
+    }
+    if(is_array($request->authors)) {
+      $book->authors()->detach();
+      $book->authors()->attach(array_unique($request->authors));
+    }
+
     $book->save();
 
     //log notification
