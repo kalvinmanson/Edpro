@@ -1,15 +1,12 @@
-Finder Attachments (CRUD)
-Button ckfinder
-
-sidebar carts
-pagos online
-blog
-mi cuenta
+-no permitir hacer pedidos vacios
+-pasar variables payU a .env
+-administrador de ordenes
+-menu usuario (mi cuenta)
 
 -pic libro
 
 Orders
-PayU
+PayU ***
 Register/Login
 Omniauth
 Emails
@@ -21,3 +18,9 @@ Demo payU:
 https://github.com/wfpaisa/payu-raw
 edicioneselprofesional@hotmail.com
 Norte#07112018$
+
+
+APPROVED
+4061529400852303
+01-25
+573

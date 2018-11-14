@@ -38,7 +38,7 @@
                 <a href="{{ route('register') }}" class="text-white">¿Eres nuevo? Registrate</a>
               @else
                 <span class="text-white">{{ Auth::user()->name }}</span> <br>
-                <a href="#" class="text-white">Mi cuenta</a> |
+                <a href="{{ route('orders.index') }}" class="text-white">Mi cuenta</a> |
                 <a href="{{ route('logout') }}" class="text-white" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Salir <i class="fas fa-power-off"></i></a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf

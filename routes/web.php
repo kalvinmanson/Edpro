@@ -51,6 +51,8 @@ Route::get('/cart/remove/{id}', 'CartController@remove')->name('cartRemove');
 Route::post('/cart/update/{id}', 'CartController@update')->name('cartUpdate');
 
 //Orders
+Route::post('/orders/confirmation', 'OrderController@confirmation')->name('confirmation');
+Route::any('/orders/response', 'OrderController@response')->name('response');
 Route::middleware(['auth'])->group(function () {
   Route::resource('orders', 'OrderController');
 });

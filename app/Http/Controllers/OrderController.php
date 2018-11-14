@@ -18,7 +18,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+      $orders = Order::where('user_id', Auth::user()->id)->paginate(10);
+      return view('orders.index', compact('orders'));
     }
 
     /**
@@ -64,6 +65,7 @@ class OrderController extends Controller
       $order->total = intval(Cart::total(0,'',''));
       $order->save();
 
+
       $user = Auth::user();
       $user->name = $request->shipping_name;
       $user->country = $request->shipping_country;
@@ -71,6 +73,8 @@ class OrderController extends Controller
       $user->address = $request->shipping_address;
       $user->phone = $request->shipping_phone;
       $user->save();
+
+      Cart::destroy();
 
       return redirect()->route('orders.show', $order->id);
     }
@@ -119,5 +123,117 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function confirmation(Request $request) {
+      $file = fopen("archivo.txt", "w");
+      fwrite($file, json_encode($request->all()) . PHP_EOL);
+      fclose($file);
+
+      $orderId = explode("-", explode("T", $request->reference_sale)[0])[1];
+      $order = Order::findOrFail($orderId);
+
+      $payU['ApiKey'] = '0hUT4PobpT0WwbMxc0k9l2HYkv'; // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = '736363'; // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = '741904'; // Obtener este dato dela cuenta de Payu
+
+      //tests
+      /*$payU['ApiKey'] = '4Vj8eK4rloUd272L48hsrarnUA'; // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = '508029'; // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = '512321'; // Obtener este dato dela cuenta de Payu*/
+
+
+      $referenceCode = $request->reference_sale;
+      $txtValue = $request->value;
+      $newValue = number_format($txtValue, 1, '.', '');
+      $currency = $request->currency;
+      $statePol = $request->state_pol;
+      $sign = $request->sign;
+
+      $firma = $payU['ApiKey']."~".$payU['merchantId']."~".$referenceCode."~".$newValue."~".$currency."~".$statePol;
+	    $firmaMd5 = md5($firma);
+      $estadoTxt = 'Firma no concuerda';
+
+      if(strtoupper($sign) == strtoupper($firmaMd5)){
+
+  		switch ($statePol) {
+        case 4:
+          $estadoTxt = "Transacción aprobada";
+          $order->pay_status = 'Paid';
+          break;
+        case 6:
+         	$estadoTxt = "Transacción rechazada";
+          $order->pay_status = 'Rejected';
+          break;
+        case 7:
+          $estadoTxt = "Transacción pendiente";
+          $order->pay_status = 'Pending';
+          break;
+        case 104:
+          $estadoTxt = "Error";
+          $order->pay_status = 'Error';
+          break;
+        default:
+        	$estadoTxt=$request->mensaje;
+  		}
+      $order->pay_date = date('Y-m-d H:i:s');
+      $order->pay_response = $statePol;
+      $order->save();
+  	 }
+     flash($estadoTxt)->info();
+     return redirect()->route('orders.show', $order->id);
+    }
+
+    public function response(Request $request) {
+      $orderId = explode("-", explode("T", $request->referenceCode)[0])[1];
+      $order = Order::findOrFail($orderId);
+
+
+      $payU['ApiKey'] = '0hUT4PobpT0WwbMxc0k9l2HYkv'; // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = '736363'; // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = '741904'; // Obtener este dato dela cuenta de Payu
+
+      //tests
+      /*$payU['ApiKey'] = '4Vj8eK4rloUd272L48hsrarnUA'; // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = '508029'; // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = '512321'; // Obtener este dato dela cuenta de Payu*/
+
+      $referenceCode = $request->referenceCode;
+      $txtValue = $request->TX_VALUE;
+      $newValue = number_format($txtValue, 1, '.', '');
+      $currency = $request->currency;
+      $statePol = $request->transactionState;
+      $sign = $request->signature;
+
+      $firma = $payU['ApiKey']."~".$payU['merchantId']."~".$referenceCode."~".$newValue."~".$currency."~".$statePol;
+	    $firmaMd5 = md5($firma);
+      $estadoTxt = 'Firma no concuerda';
+
+      if(strtoupper($sign) == strtoupper($firmaMd5)){
+    		switch ($statePol) {
+          case 4:
+            $estadoTxt = "Transacción aprobada";
+            $order->pay_status = 'Paid';
+            break;
+          case 6:
+           	$estadoTxt = "Transacción rechazada";
+            $order->pay_status = 'Rejected';
+            break;
+          case 7:
+            $estadoTxt = "Transacción pendiente";
+            $order->pay_status = 'Pending';
+            break;
+          case 104:
+            $estadoTxt = "Error";
+            $order->pay_status = 'Error';
+            break;
+          default:
+          	$estadoTxt=$request->mensaje;
+  		}
+      $order->pay_date = date('Y-m-d H:i:s');
+      $order->pay_response = $statePol;
+      $order->save();
+  	 }
+     flash($estadoTxt)->info();
+     return redirect()->route('orders.show', $order->id);
     }
 }
