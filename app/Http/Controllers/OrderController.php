@@ -30,6 +30,10 @@ class OrderController extends Controller
     public function create()
     {
       $carts = Cart::content();
+      if(Cart::count() < 1) {
+        flash('Tu carro de compra esta vacio.')->info();
+        return redirect()->route('store');
+      }
       return view('orders.create', compact('carts'));
     }
 
@@ -41,6 +45,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+      if(Cart::count() < 1) {
+        flash('Tu carro de compra esta vacio.')->info();
+        return redirect()->route('store');
+      }
       $carts = Cart::content();
       $validatedData = $request->validate([
         'shipping_name' => 'required|max:150',
@@ -132,9 +140,9 @@ class OrderController extends Controller
       $orderId = explode("-", explode("T", $request->reference_sale)[0])[1];
       $order = Order::findOrFail($orderId);
 
-      $payU['ApiKey'] = '0hUT4PobpT0WwbMxc0k9l2HYkv'; // Obtener este dato dela cuenta de Payu
-      $payU['merchantId'] = '736363'; // Obtener este dato dela cuenta de Payu
-      $payU['accountId'] = '741904'; // Obtener este dato dela cuenta de Payu
+      $payU['ApiKey'] = env('PAYU_APIKEY'); // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = env('PAYU_MERCHANT_ID'); // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = env('PAYU_ACCOUNT_ID'); // Obtener este dato dela cuenta de Payu
 
       //tests
       /*$payU['ApiKey'] = '4Vj8eK4rloUd272L48hsrarnUA'; // Obtener este dato dela cuenta de Payu
@@ -179,18 +187,15 @@ class OrderController extends Controller
       $order->pay_response = $statePol;
       $order->save();
   	 }
-     flash($estadoTxt)->info();
-     return redirect()->route('orders.show', $order->id);
     }
 
     public function response(Request $request) {
       $orderId = explode("-", explode("T", $request->referenceCode)[0])[1];
       $order = Order::findOrFail($orderId);
 
-
-      $payU['ApiKey'] = '0hUT4PobpT0WwbMxc0k9l2HYkv'; // Obtener este dato dela cuenta de Payu
-      $payU['merchantId'] = '736363'; // Obtener este dato dela cuenta de Payu
-      $payU['accountId'] = '741904'; // Obtener este dato dela cuenta de Payu
+      $payU['ApiKey'] = env('PAYU_APIKEY'); // Obtener este dato dela cuenta de Payu
+      $payU['merchantId'] = env('PAYU_MERCHANT_ID'); // Obtener este dato dela cuenta de Payu
+      $payU['accountId'] = env('PAYU_ACCOUNT_ID'); // Obtener este dato dela cuenta de Payu
 
       //tests
       /*$payU['ApiKey'] = '4Vj8eK4rloUd272L48hsrarnUA'; // Obtener este dato dela cuenta de Payu

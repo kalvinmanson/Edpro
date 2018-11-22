@@ -13,6 +13,7 @@ use App\Book;
 
 use Auth;
 use URL;
+use Image;
 
 class BookController extends Controller
 {
@@ -31,7 +32,7 @@ class BookController extends Controller
       $books = Book::orderBy('created_at', 'desc');
     }
     if(isset($request->q)) {
-      $books = $books->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('isbn', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
+      $books = $books->where('name', 'LIKE', '%'.$request->q.'%')->orWhere('isbn', 'LIKE', '%'.$request->q.'%')->orWhere('description', 'LIKE', '%'.$request->q.'%');
     }
 
     $books = $books->paginate(20);
@@ -88,11 +89,18 @@ class BookController extends Controller
     $validatedData = $request->validate([
       'name' => 'required|max:255',
       'slug' => 'required|unique:books,slug,'.$book->id.'|max:255',
-      'publisher_id' => 'required'
+      'publisher_id' => 'required',
+      'picture' => 'image'
     ]);
+    //Picture
+    if($request->file('picture')) {
+      $img = Image::make($request->file('picture'));
+      $img->fit(400, 533);
+      $img->save('uploads/'.$book->id.'-'.$book->slug.'.'.$request->picture->extension());
+      $book->picture = '/uploads/'.$book->id.'-'.$book->slug.'.'.$request->picture->extension();
+    }
     $book->name = $request->name;
     $book->slug = str_slug($request->slug);
-    $book->picture = $request->picture;
     $book->isbn = $request->isbn;
     $book->lang = $request->lang;
     $book->pages = $request->pages;

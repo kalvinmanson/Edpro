@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <book-info isbn="{{ $book->isbn }}"></book-info>
-  <form action="{{ route('admin.books.update', $book->id) }}" method="POST" class="card">
+  <form action="{{ route('admin.books.update', $book->id) }}" method="POST" class="card" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
     @csrf
 
@@ -48,7 +48,10 @@
               </div>
               <div class="form-group">
                 <label for="picture">Picture</label>
-                <upload-input name="picture" value="{{ old('picture') ? old('picture') : $book->picture }}"></upload-input>
+                <input type="file" name="picture" id="picture" class="form-control">
+                @if($book->picture)
+                  <a href="{{ $book->picture }}" data-fancybox="gallery"><i class="far fa-image"></i> {{ $book->picture }}</a>
+                @endif
               </div>
               <div class="row">
                 <div class="col-sm-4">

@@ -1,9 +1,9 @@
--no permitir hacer pedidos vacios
--pasar variables payU a .env
--administrador de ordenes
--menu usuario (mi cuenta)
+-no permitir hacer pedidos vacios **
+-pasar variables payU a .env **
+-administrador de ordenes ***
+-menu usuario (mi cuenta) ***
 
--pic libro
+-pic libro **
 
 Orders
 PayU ***
@@ -13,6 +13,8 @@ Emails
 Quienes somos
 SEO
 Captcha
+
+Pagina de autores y editoriales
 
 Demo payU:
 https://github.com/wfpaisa/payu-raw

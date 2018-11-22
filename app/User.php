@@ -32,4 +32,8 @@ class User extends Authenticatable
   {
     return $this->hasMany('App\Notification');
   }
+  public function orders()
+  {
+    return $this->hasMany('App\Order');
+  }
 }

@@ -7,9 +7,9 @@
 <?php
 
     $payU['url'] = 'https://checkout.payulatam.com/ppp-web-gateway-payu/'; // Producción
-    $payU['ApiKey'] = '0hUT4PobpT0WwbMxc0k9l2HYkv'; // Obtener este dato dela cuenta de Payu
-    $payU['merchantId'] = '736363'; // Obtener este dato dela cuenta de Payu
-    $payU['accountId'] = '741904'; // Obtener este dato dela cuenta de Payu
+    $payU['ApiKey'] = env('PAYU_APIKEY'); // Obtener este dato dela cuenta de Payu
+    $payU['merchantId'] = env('PAYU_MERCHANT_ID'); // Obtener este dato dela cuenta de Payu
+    $payU['accountId'] = env('PAYU_ACCOUNT_ID'); // Obtener este dato dela cuenta de Payu
     //tests
     /*
     $payU['url'] = 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu';
