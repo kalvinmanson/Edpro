@@ -15,6 +15,7 @@ SEO
 Captcha
 
 Pagina de autores y editoriales
+comentarios orders
 
 Demo payU:
 https://github.com/wfpaisa/payu-raw

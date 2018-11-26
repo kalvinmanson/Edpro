@@ -36,7 +36,8 @@
         <label for="password-confirm">{{ __('Confirm Password') }}</label>
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
     </div>
-
+    {!! NoCaptcha::display() !!}
+    {!! NoCaptcha::renderJs() !!}
     <div class="form-group  mb-0">
       <button type="submit" class="btn btn-primary">
         {{ __('Register') }}

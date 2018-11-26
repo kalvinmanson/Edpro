@@ -31,6 +31,8 @@ Route::prefix('admin')->namespace('Admin')->as('admin.')->middleware(['auth', 'a
 //Route::get('/migrate', 'WebController@migrate')->name('migrate');
 
 Auth::routes();
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->name('oauth');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/home', 'WebController@index')->name('home');
 Route::get('/', 'WebController@soon')->name('soon');

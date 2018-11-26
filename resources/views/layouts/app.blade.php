@@ -78,11 +78,12 @@
     <main>
       <div class="container">
         @include('flash::message')
+        @include('partials.errors')
       </div>
       @yield('content')
     </main>
     <div class="newsLetter mt-4 py-5 text-center">
-      <h3 class="text-white shadow">No te piedas nuestas promociones y eventos</h3>
+      <h3 class="text-white shadow">No te pierdas nuestas promociones y eventos</h3>
     </div>
     <footer class="bg-dark text-white py-3">
       <div class="container">
