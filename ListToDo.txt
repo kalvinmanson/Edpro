@@ -2,29 +2,28 @@
 -pasar variables payU a .env **
 -administrador de ordenes ***
 -menu usuario (mi cuenta) ***
-
 -pic libro **
-
 Orders
 PayU ***
 Register/Login **
 Omniauth **
 Emails **
+Captcha ***
+Logos ***
+Pagina de autores y editoriales **
+
 Quienes somos
 SEO
-Captcha
-Logos
+  -canonicals urls
+  -post facebook twitter
+  -share links
+  -sitemap
+  -rss
+  -webmaster tools
 
---Pagina de autores y editoriales
-comentarios orders
-
-Demo payU:
-https://github.com/wfpaisa/payu-raw
-edicioneselprofesional@hotmail.com
-Norte#07112018$
-
-
-APPROVED
-4061529400852303
-01-25
-573
+Comentarios orders
+Diseño
+  -imaganes
+Paginas de contenido
+buscador home
+Mailchimp

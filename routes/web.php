@@ -35,7 +35,7 @@ Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider')->name(
 Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/home', 'WebController@index')->name('home');
-Route::get('/', 'WebController@soon')->name('soon');
+Route::get('/', 'WebController@index')->name('soon');
 Route::post('/contact', 'ContactController@store')->name('contact');
 
 
