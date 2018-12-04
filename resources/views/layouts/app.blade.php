@@ -63,7 +63,7 @@
                   <li class="nav-item"><a class="nav-link" href="#">Promociones</a></li>
                 </ul>
                 <form action="{{ route('search') }}" method="GET" class="form-inline my-2 my-lg-0">
-                  <input class="form-control bg-transparent border-0" name="q" type="search" placeholder="{{ Request::get('q') ? Request::get('q') : 'Equinos...' }}" aria-label="Buscar">
+                  <input class="form-control bg-transparent border-0" name="q" type="search" placeholder="{{ Request::get('q') ? Request::get('q') : 'Buscar...' }}" aria-label="Buscar">
                   <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                 </form>
               </div>
@@ -82,7 +82,7 @@
       </div>
       @yield('content')
     </main>
-    <div class="newsLetter mt-4 py-5 text-center">
+    <div class="newsLetter py-5 text-center">
       <h3 class="text-white shadow">No te pierdas nuestas promociones y eventos</h3>
     </div>
     <footer class="bg-dark text-white py-3">

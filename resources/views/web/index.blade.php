@@ -36,30 +36,7 @@
     <div class="row p-3">
       @foreach($topBooks as $book)
       <div class="col-sm-6 col-md-3">
-        <div class="bookList">
-          <a href="{{ route('book', $book->slug) }}" class="cover">
-            <div class="price py-1 px-2">
-              <s>$ {{ $book->old_price > 0 ? number_format($book->old_price) : '' }}</s>
-              <span>$ {{ number_format($book->price) }}</span>
-            </div>
-            <img src="/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400" class="w-100">
-          </a>
-          <h5>
-            {{ $book->name }}
-            <small>
-              {{ $book->publisher->name }}
-              @foreach($book->authors as $author)
-                {{ $author->name }}
-              @endforeach
-            </small>
-          </h5>
-          <div class="text-center">
-            <div class="btn-group" role="group" aria-label="Book actions">
-              <a href="{{ route('book', $book->slug) }}" class="btn btn-sm btn-outline-info"><i class="fa fa-plus"></i> Info</a>
-              <a href="{{ route('cartAdd', $book->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-cart-plus"></i> Comprar</a>
-            </div>
-          </div>
-        </div>
+        @include('partials.store.book')
       </div>
       @endforeach
     </div>
@@ -67,7 +44,7 @@
 </div>
 <div class="my-5 p-3 text-center publisherBrands">
   @foreach($publishers as $publisher)
-    <a href="#" class="bg-white py-2 px-4 shadow-sm" title="Editorial: {{ $publisher->name }}">
+    <a href="{{ route('publisher', $publisher->slug) }}" class="bg-white py-2 px-4 shadow-sm" title="Editorial: {{ $publisher->name }}">
       <img src="{{ $publisher->picture or '/img/editorial.jpg' }}" class="img-fluid" alt="Editorial: {{ $publisher->name }}">
       <h4>{{ $publisher->name }}</h4>
     </a>

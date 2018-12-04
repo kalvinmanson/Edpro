@@ -6,6 +6,7 @@ use App\Book;
 use App\Comment;
 use App\Topic;
 use App\Author;
+use App\Publisher;
 use Auth;
 
 use Illuminate\Http\Request;
@@ -48,5 +49,13 @@ class StoreController extends Controller
 
     flash('Hemos recibido tu comentario, será publicado luego de su revisión.')->success();
     return redirect()->route('book', $book->slug);
+  }
+  public function publisher($slug) {
+    $publisher = Publisher::where('slug', $slug)->firstOrFail();
+    return view('store.publisher', compact('publisher'));
+  }
+  public function author($slug) {
+    $author = Author::where('slug', $slug)->firstOrFail();
+    return view('store.author', compact('author'));
   }
 }

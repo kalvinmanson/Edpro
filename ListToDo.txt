@@ -7,14 +7,15 @@
 
 Orders
 PayU ***
-Register/Login
-Omniauth
-Emails
+Register/Login **
+Omniauth **
+Emails **
 Quienes somos
 SEO
 Captcha
+Logos
 
-Pagina de autores y editoriales
+--Pagina de autores y editoriales
 comentarios orders
 
 Demo payU:

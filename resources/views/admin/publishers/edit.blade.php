@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-  <form action="{{ route('admin.publishers.update', $publisher->id) }}" method="POST" class="card">
+  <form action="{{ route('admin.publishers.update', $publisher->id) }}" method="POST" class="card" enctype="multipart/form-data">
     <input type="hidden" name="_method" value="PUT">
     @csrf
     <div class="card-header">Edit publisher: {{ $publisher->name }}</div>
@@ -24,7 +24,10 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="picture">Picture</label>
-            <upload-input name="picture" value="{{ old('picture') ? old('picture') : $publisher->picture }}"></upload-input>
+            <input type="file" name="picture" id="picture" class="form-control">
+            @if($publisher->picture)
+              <a href="{{ $publisher->picture }}" data-fancybox="gallery"><i class="far fa-image"></i> {{ $publisher->picture }}</a>
+            @endif
           </div>
         </div>
       </div>

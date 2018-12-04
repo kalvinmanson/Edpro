@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Ediciones El Profesional')
-@section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
+@section('title', $book->name)
+@section('description', $book->description)
 
 @section('header')
   <div class="barBg p-4" style="background-image: url(/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400)">
@@ -13,7 +13,7 @@
     @foreach($book->authors as $author)
       {{ $author->name }},
     @endforeach
-    <br><i class="fas fa-tags"></i> 
+    <br><i class="fas fa-tags"></i>
     @foreach($book->topics as $topic)
       {{ $topic->name }},
     @endforeach
@@ -95,31 +95,28 @@
       {{-- End Tabs --}}
     </div>
     <div class="col-md-4">
+      <a class="float-right" href="{{ route('publisher', $book->publisher->slug) }}" title="Editorial: {{ $book->publisher->name }}">
+        <img src="{{ $book->publisher->picture }}" width="80">
+      </a>
       <h5>Editorial: {{ $book->publisher->name }}</h5>
       <p class="text-secondary">
-        {{ $book->publisher->description }}
-        <a href="#">Libros de {{ $book->publisher->name }}</a>
+        <small>{{ $book->publisher->description }}</small>
+        <a href="{{ route('publisher', $book->publisher->slug) }}" title="Editorial: {{ $book->publisher->name }}" class="btn btn-sm btn-primary">
+          Libros de {{ $book->publisher->name }}
+        </a>
       </p>
-
+      <hr>
       <h5>Autor(es):</h5>
-      <div class="accordion" id="accordionExample">
         @foreach($book->authors as $author)
-        <div class="card">
-          <div class="card-header" id="authorHead{{ $author->id }}">
-            <a href="JavaScript:void();" data-toggle="collapse" data-target="#author{{ $author->id }}" aria-expanded="true" aria-controls="author{{ $author->id }}">
-              {{ $author->name }}
+          <p>
+            <strong>{{ $author->name }}</strong>,<br>
+            <small>{{ str_limit($author->description, 100, '...') }}</small>
+            <a href="{{ route('author', $author->slug) }}" title="Autor: {{ $author->name }}" class="btn btn-sm btn-primary">
+              Ver libros de {{ $author->name }}
             </a>
-          </div>
+          </p>
 
-          <div id="author{{ $author->id }}" class="collapse" aria-labelledby="authorHead{{ $author->id }}" data-parent="#accordionExample">
-            <div class="card-body">
-              {{ $author->description }}
-              <a href="#">Libros de {{ $author->name }}</a>
-            </div>
-          </div>
-        </div>
         @endforeach
-      </div>
     </div>
   </div>
 

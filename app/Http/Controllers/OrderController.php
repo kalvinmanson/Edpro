@@ -8,6 +8,7 @@ use App\Book;
 use App\Order;
 use Cart;
 use Auth;
+use Mail;
 
 class OrderController extends Controller
 {
@@ -83,6 +84,13 @@ class OrderController extends Controller
       $user->save();
 
       Cart::destroy();
+
+      Mail::send('emails.orders.new', ['order' => $order], function ($m) use ($order) {
+        $m->from('contacto@edicioneselprofesional.com.co', 'Ediciones el Profesional');
+        $m->to($order->user->email, $order->user->name)->subject('Pedido recibido #'.$order->id);
+        $m->bcc('contacto@edicioneselprofesional.com.co', 'Ediciones el profesional');
+        $m->bcc('edicioneselprofesional@hotmail.com', 'Ediciones el profesional');
+      });
 
       return redirect()->route('orders.show', $order->id);
     }

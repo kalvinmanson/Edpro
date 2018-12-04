@@ -38,12 +38,15 @@ Route::get('/home', 'WebController@index')->name('home');
 Route::get('/', 'WebController@soon')->name('soon');
 Route::post('/contact', 'ContactController@store')->name('contact');
 
+
 /* STORE */
 Route::get('/buscar', 'StoreController@search')->name('search');
 Route::get('/tienda', 'StoreController@index')->name('store');
 Route::get('/tienda/topic/{topic}', 'StoreController@index')->where('topic', '[a-z,0-9-]+')->name('storeTopic');
 Route::get('/tienda/{slug}', 'StoreController@book')->where('slug', '[a-z,0-9-]+')->name('book');
 Route::post('/tienda/{slug}/addcomment', 'StoreController@addcomment')->where('slug', '[a-z,0-9-]+')->middleware(['auth'])->name('addcomment');
+Route::get('/editorial/{slug}', 'StoreController@publisher')->name('publisher');
+Route::get('/autor/{slug}', 'StoreController@author')->name('author');
 
 //Cart
 Route::get('/cart', 'CartController@index');

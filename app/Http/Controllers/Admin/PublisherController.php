@@ -10,6 +10,7 @@ use App\Publisher;
 
 use Auth;
 use URL;
+use Image;
 
 class PublisherController extends Controller
 {
@@ -55,9 +56,15 @@ class PublisherController extends Controller
       'name' => 'required|max:255',
       'slug' => 'required|unique:publishers,slug,'.$publisher->id.'|max:255'
     ]);
+    //Picture
+    if($request->file('picture')) {
+      $img = Image::make($request->file('picture'));
+      $img->fit(300, 250);
+      $img->save('uploads/'.$publisher->id.'-'.$publisher->slug.'.'.$request->picture->extension());
+      $publisher->picture = '/uploads/'.$publisher->id.'-'.$publisher->slug.'.'.$request->picture->extension();
+    }
     $publisher->name = $request->name;
     $publisher->slug = str_slug($request->slug);
-    $publisher->picture = $request->picture;
     $publisher->description = $request->description;
     $publisher->save();
 
