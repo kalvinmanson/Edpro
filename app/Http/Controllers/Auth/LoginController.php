@@ -54,7 +54,6 @@ class LoginController extends Controller
         $regUser->name = $user->getName();
         $regUser->email = $user->getEmail();
         $regUser->password = str_random(40);
-        $regUser->email_verified_at = date('Y-m-d H:i:s');
         $regUser->avatar = $user->getAvatar();
         $regUser->save();
       } else {
