@@ -1,19 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Ediciones El Profesional')
-@section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
+@section('title', $post->name)
+@section('description', $post->description)
 
 @section('header')
   <div class="barBg p-4">
     <h3>Noticias y Novedades</h3>
-    <h2>Blog de actualidad.</h2>
+    <h1>{{ $post->name }}</h1>
   </div>
 @endsection
 @section('content')
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-lg-9">
-      @foreach($posts as $post)
       <div class="card mb-3">
         <img class="card-img-top" src="{{ $post->picture ? $post->picture : '/img/clips/news.jpg' }}" alt="{{ $post->name }}">
         <div class="card-body">
@@ -22,14 +21,13 @@
           </a>
           <p class="card-text p-0 m-0"><small class="text-muted">{{ $post->created_at->diffForHumans() }}</small></p>
           <p class="card-text">{{ $post->description }}</p>
+          <hr>
+          {!! $post->content !!}
         </div>
       </div>
-      @endforeach
     </div>
     <div class="col-md-4 col-lg-3">
     </div>
   </div>
 </div>
-
-
 @endsection

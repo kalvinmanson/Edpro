@@ -63,5 +63,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 /* Blog */
-Route::get('/blog', 'BlogController@index')->name('blog');
 Route::get('/blog/{slug}', 'BlogController@post')->where('slug', '[a-z,0-9-]+')->name('post');
+Route::get('/blog', 'BlogController@index')->name('blog');

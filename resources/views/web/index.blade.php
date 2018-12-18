@@ -67,7 +67,7 @@
           <div class="card mb-3">
             <img class="card-img-top" src="{{ $post->picture ? $post->picture : '/img/clips/news.jpg' }}" alt="{{ $post->name }}">
             <div class="card-body">
-              <a href="{{ route('blog', $post->slug) }}">
+              <a href="{{ route('post', $post->slug) }}">
                 <h5 class="card-title m-0">{{ $post->name }}</h5>
               </a>
               <p class="card-text p-0 m-0"><small class="text-muted">{{ $post->created_at->diffForHumans() }}</small></p>
