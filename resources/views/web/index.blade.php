@@ -4,17 +4,9 @@
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
 
 @section('header')
-  <div class="row">
-    <div class="col-md-4">
-      <img src="/img/clips/expopet.jpg" class="img-fluid">
-    </div>
-    <div class="col-md-8 py-3">
-      <h3>Evento:</h3>
-      <h2>Expopet 2018</h2>
-      <p>Expopet Colombia, Feria Internacional de Animales de Compañía, es la plataforma comercial en donde la mascota es la gran protagonista, en un ambiente de negocios, actualización, familia, entretenimiento y diversión.</p>
-      <a href="#" class="btn btn-outline-primary"><i class="fas fa-angle-right"></i> Leer más...</a>
-    </div>
-  </div>
+  <a href="/blog/los-gatos-en-la-clinica-diaria-ix" title="Los Gatos en la Clínica Diaria IX">
+    <img src="/img/banners/banner-los-gatos-ix.jpg" class="w-100" alt="Los Gatos en la Clínica Diaria IX">
+  </a>
 @endsection
 
 @section('content')
