@@ -2,6 +2,7 @@
 
 @section('title', 'Editorial '.$publisher->name)
 @section('description', $publisher->description)
+@section('canonical', route('publisher', $publisher->slug))
 
 @section('header')
   <div class="barBg p-4">

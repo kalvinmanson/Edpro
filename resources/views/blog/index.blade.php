@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Ediciones El Profesional')
-@section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
+@section('title', 'Actualidad Ediciones el Profesional')
+@section('description', 'Blog de actualidad en noticias y eventos para veterinarios y zootecnistas.')
+@section('canonical', route('blog'))
 
 @section('header')
   <div class="barBg p-4">

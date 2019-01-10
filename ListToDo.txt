@@ -14,12 +14,14 @@ Pagina de autores y editoriales **
 
 Quienes somos
 SEO
-  -canonicals urls
+  -canonicals urls **
   -post facebook twitter
   -share links
   -sitemap
   -rss
   -webmaster tools
+
+Tags page
 
 Comentarios orders
 Diseño

@@ -2,6 +2,9 @@
 
 @section('title', $book->name)
 @section('description', $book->description)
+@section('canonical', route('book', $book->slug))
+@section('ogtype', 'books.book')
+@section('ogimage', url('/').$book->picture)
 
 @section('header')
   <div class="barBg p-4" style="background-image: url(/t.php?src={{ $book->picture or '/img/no-cover.jpg' }}&w=300&h=400)">

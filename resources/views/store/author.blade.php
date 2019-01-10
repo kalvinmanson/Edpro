@@ -2,6 +2,9 @@
 
 @section('title', 'Autor '.$author->name)
 @section('description', $author->description)
+@section('canonical', route('author', $author->slug))
+@section('ogtype', 'books.author')
+@section('ogimage', url('/'.$author->picture))
 
 @section('header')
   <div class="barBg p-4">

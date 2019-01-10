@@ -2,6 +2,7 @@
 
 @section('title', 'Ediciones El Profesional')
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
+@section('canonical', route('store'))
 
 @section('header')
   <div class="barBg p-4">

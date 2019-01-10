@@ -2,6 +2,11 @@
 
 @section('title', 'Ediciones El Profesional')
 @section('description', 'La mejor experiencia y poner a tu disposicion el catalogo de mejor calidad de libros especializados, técnicos y científicos disponibles en el país.')
+@section('canonical', url('/'))
+@section('ogtype', 'business.business')
+@section('ogimage', url('/img/cover.png'))
+
+
 
 @section('header')
   <a href="/blog/los-gatos-en-la-clinica-diaria-ix" title="Los Gatos en la Clínica Diaria IX">
