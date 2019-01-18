@@ -8,12 +8,15 @@
   <title>@yield('title')</title>
   <meta name="description" content="@yield('description')">
   <link rel="canonical" href="@yield('canonical')" />
-  <meta property="fb:app_id" content="204818177114470" /> 
+  <meta property="fb:app_id" content="204818177114470" />
   <meta property="og:url" content="@yield('canonical')" />
   <meta property="og:type" content="@yield('ogtype')" />
   <meta property="og:title" content="@yield('title')" />
   <meta property="og:description" content="@yield('description')" />
   <meta property="og:image" content="@yield('ogimage')" />
+  <meta property="books:isbn" content="@yield('isbn')" />
+  <meta property="books:author" content="@yield('authorUrl')" />
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130439194-1"></script>
   <script>
@@ -97,7 +100,7 @@
       @yield('content')
     </main>
     <div class="newsLetter py-5 text-center">
-      <h3 class="text-white shadow">No te pierdas nuestas promociones y eventos</h3>
+      <h3 class="text-white shadow">No te pierdas nuestras promociones y eventos</h3>
     </div>
     <footer class="bg-dark text-white py-3">
       <div class="container">

@@ -35,6 +35,15 @@ class StoreController extends Controller
     $topics = Topic::where('parent_id', 0)->get();
     return view('store.index', compact('books', 'topics'));
   }
+  public function topic($topic) {
+    $topic = Topic::where('slug', $topic)->firstOrFail();
+    $books = Book::orderBy('updated_at', 'desc');
+    $books = $books->whereHas('topics', function($query) use ($topic) {
+      $query->where('id', $topic->id);
+    });
+    $books = $books->paginate(15);
+    return view('store.topic', compact('books', 'topic'));
+  }
   public function book($slug) {
     $book = Book::where('slug', $slug)->firstOrFail();
     return view('store.book', compact('book'));

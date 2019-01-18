@@ -15,7 +15,7 @@ Pagina de autores y editoriales **
 Quienes somos
 SEO
   -canonicals urls **
-  -post facebook twitter
+  -post facebook twitter **
   -share links
   -sitemap
   -rss
