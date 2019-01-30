@@ -102,6 +102,7 @@ class BookController extends Controller
     $book->name = $request->name;
     $book->slug = str_slug($request->slug);
     $book->isbn = $request->isbn;
+    $book->publisher_id = $request->publisher_id;
     $book->lang = $request->lang;
     $book->pages = $request->pages;
     $book->year = $request->year;

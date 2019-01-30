@@ -43,7 +43,6 @@
   @foreach($publishers as $publisher)
     <a href="{{ route('publisher', $publisher->slug) }}" class="bg-white py-2 px-4 shadow-sm" title="Editorial: {{ $publisher->name }}">
       <img src="{{ $publisher->picture or '/img/editorial.jpg' }}" class="img-fluid" alt="Editorial: {{ $publisher->name }}">
-      <h4>{{ $publisher->name }}</h4>
     </a>
   @endforeach
 </div>

@@ -4,9 +4,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/css/all.css';
 @import '~fancybox/dist/css/jquery.fancybox.css';
-@import '~animate.css/animate.min.css';
 
 
 /* MIXINS */
@@ -191,6 +189,7 @@ header .cartIcon span {
 .publisherBrands a {
   display: inline-block;
   position: relative;
+  max-width: 200px;
 }
 .publisherBrands a h4 {
   text-align: center;

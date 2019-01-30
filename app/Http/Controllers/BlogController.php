@@ -22,8 +22,4 @@ class BlogController extends Controller
     $post = Page::where('slug', $slug)->firstOrFail();
     return view('blog.post', compact('post'));
   }
-  public function show($slug)
-  {
-    return view('web.soon');
-  }
 }

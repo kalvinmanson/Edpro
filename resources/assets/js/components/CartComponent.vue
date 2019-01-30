@@ -41,7 +41,7 @@ export default {
     load() {
       window.axios.get('/cart/json').then(({ data }) => {
         this.carts = data;
-        console.log(data);
+        //console.log(data);
       });
     }
   }

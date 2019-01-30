@@ -38,7 +38,7 @@ export default {
   methods: {
     search() {
       window.axios.get('https://www.googleapis.com/books/v1/volumes?q=isbn:'+ this.isbn+'&key=AIzaSyAVHb4sGYDwZdeFdaNIENSt6OFgeYtUMtE').then(({ data }) => {
-        console.log(data);
+        //console.log(data);
         if(data.totalItems < 1) {
           alert('no se encontraron coinsidencias.');
         } else {

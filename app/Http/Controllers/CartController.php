@@ -19,6 +19,11 @@ class CartController extends Controller
   }
   public function store($id) {
     $book = Book::findOrFail($id);
+    //verificar stock
+    if($book->stock < 1) {
+      flash('el libro que intentas agregar a tu carro se encuentra agotado.')->error();
+      return back();
+    }
     Cart::add($book, 1);
     flash('Se agrego el libro a tu carro de compras.')->success();
     return back();

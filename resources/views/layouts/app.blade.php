@@ -32,10 +32,10 @@
       <div class="miniTop">
         <div class="container">
           <ul>
-            <li><a href="#">Sobre nosotros</a></li>
-            <li><a href="#">Contacto</a></li>
-            <li><a href="#">Ayuda</a></li>
-            <li><a href="#">Español</a></li>
+            <li><a href="/edpro/sobre-ediciones-el-profesional" title="Sobre Ediciones el Profesional">Sobre nosotros</a></li>
+            <li><a href="/edpro/contacto" title="Contacto">Contacto</a></li>
+            <li><a href="/edpro/ayuda" title="Ayuda y preguntas frecuentes">Ayuda</a></li>
+            <li><a href="/cart" title="Carro de compra"><i class="fas fa-shopping-cart"></i> Carro de compra</a></li>
           </ul>
         </div>
       </div>
@@ -124,6 +124,8 @@
     </footer>
   </div>
   <script src="{{ asset('js/app.js') }}" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </body>
 </html>

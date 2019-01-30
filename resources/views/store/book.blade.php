@@ -39,7 +39,13 @@
           <h1>{{ $book->name }}</h1>
           <div class="row">
             <div class="col-6">
-              <a href="{{ route('cartAdd', $book->id) }}" class="btn btn-success btn-lg"><i class="fas fa-cart-plus"></i> Agregar al carro</a>
+              @if($book->stock > 0)
+                <a href="{{ route('cartAdd', $book->id) }}" class="btn btn-success btn-lg"><i class="fas fa-cart-plus"></i> Agregar al carro</a>
+              @else
+                <div class="alert alert-warning" role="alert">
+                  Este libro se encuentra agotado.
+                </div>
+              @endif
             </div>
             <div class="col-6">
               <div class="price py-1 px-2">

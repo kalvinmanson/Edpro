@@ -18,7 +18,7 @@
       <i class="far fa-user"></i>
       @foreach($book->authors as $author)
         <a href="{{ route('author', $author->slug) }}" title="Autor: {{ $author->name }}">
-          {{ $author->name }}, 
+          {{ $author->name }},
         </a>
       @endforeach
     </small>
@@ -26,7 +26,12 @@
   <div class="text-center">
     <div class="btn-group" role="group" aria-label="Book actions">
       <a href="{{ route('book', $book->slug) }}" class="btn btn-sm btn-outline-info"><i class="fa fa-plus"></i> Info</a>
-      <a href="{{ route('cartAdd', $book->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-cart-plus"></i> Comprar</a>
+      @if($book->stock > 0)
+        <a href="{{ route('cartAdd', $book->id) }}" class="btn btn-sm btn-outline-success"><i class="fas fa-cart-plus"></i> Comprar</a>
+      @else
+        <a href="{{ route('book', $book->slug) }}" class="btn btn-sm btn-outline-secondary">Agotador</a>
+      @endif
+
     </div>
   </div>
 </div>
