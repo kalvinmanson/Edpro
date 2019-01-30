@@ -2,7 +2,7 @@
 
 @section('title', $page->name)
 @section('description', $page->description)
-@section('canonical', route('post', $page->slug))
+@section('canonical', route('page', $page->slug))
 
 @section('header')
   <div class="barBg p-4">

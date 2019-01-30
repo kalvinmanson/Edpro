@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\Author;
 use App\Book;
 use App\Topic;
 use App\Page;
+use App\Category;
 use App\Publisher;
 use Auth;
 
@@ -30,5 +32,12 @@ class WebController extends Controller
   public function page($slug) {
     $page = Page::where('slug', $slug)->firstOrFail();
     return view('web.page', compact('page'));
+  }
+  public function sitemap() {
+    $categories = Category::where('parent_id', 0)->get();
+    $books = Book::all();
+    $publishers = Publisher::all();
+    $authors = Author::all();
+    return response()->view('web.sitemap', compact('categories', 'books', 'publishers', 'authors'))->header('Content-Type', 'text/xml');
   }
 }

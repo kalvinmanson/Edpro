@@ -68,3 +68,4 @@ Route::get('/blog', 'BlogController@index')->name('blog');
 
 /* Paginas */
 Route::get('/edpro/{slug}', 'WebController@page')->where('slug', '[a-z,0-9-]+')->name('page');
+Route::get('/sitemap.xml', 'WebController@sitemap')->name('sitemap');
